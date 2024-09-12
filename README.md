@@ -35,10 +35,15 @@ How to Use
 To clone and run any project in this repository:
 
 1. Clone the repository:
-     git clone git@github.com:NotoriousJP4/development.git
+
+        git clone git@github.com:NotoriousJP4/development.git
+
 2. Navigate to the project folder:
-     cd *project-folder*
+
+       cd *project-folder*
+
 3. Follow the setup instructions in the project's README.md file.
+
 
 Contributing
 
