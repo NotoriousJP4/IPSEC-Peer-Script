@@ -14,10 +14,12 @@ rc_start() {
     pid = "$(/bin/pgrep -f $py_script)"
     if [ -n "${pid}" ]; then
         echo "IPSEC Peer Script started. PID # is (${pid})"
-        
-        
-    
+        /usr/bin/logger -p daemon.info -t ipsec-peer-script "IPSEC Peer Script started"
 
-
+    else
+        echo "IPSEC Peer Script failed to start"
+        /usr/bin/logger -p daemon.info -t ipsec-peer-script "IPSEC Peer Script failed to start"
+    fi
 
 }
+
