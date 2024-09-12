@@ -1,51 +1,25 @@
-#development
-
 Overview
 
-This repository is a collection of my personal projects and coding exercises. The projects cover a wide range of topics including:
+The IPSEC Peer Script is a custom bash shell script designed to manage and monitor IPsec peer connections. It provides essential functionalities such as starting, stopping, and checking the status of an IPsec peer-checking process (ipsec_peer_check.py). 
 
-    Programming languages: Python, Shell Scripting, etc.
-    Network engineering: Automation, scripting for pfSense, etc.
-    Web scraping and automation: Selenium, Beautiful Soup, and more.
-    Version control: Git and GitHub integration, SSH setup, and repository management.
+This script is useful for automating IPsec connection management in environments that rely on secure VPN tunnels, ensuring that peers are monitored and that status changes can be logged and acted upon.
 
-Each project folder contains its own README.md file with details about that specific project, such as its purpose, how to run it, and any relevant notes.
+Features
+	
+ 	1. Start: Launches the IPsec peer-checking process and monitors its PID.
+	2. Stop: Gracefully terminates the IPsec peer-checking process.
+	3. Status: Checks if the IPsec peer-checking process is currently running.
+	4. Restart: Restarts the process by stopping and starting it again.
+	5. Logging: Logs the status of the process to the system daemon log.
 
-Projects
-Project Highlights:
+Requirements
 
-    pfSense Shell Script - A shell script to automate configurations for my pfSense firewall.
-    Job Scraper - Python web scraper for pulling job listings from platforms like Indeed, using Selenium.
-    Network Automation Scripts - A set of scripts automating common networking tasks (e.g., configuration backups, monitoring).
+	1. Bash shell (tested on sh and bash)
+	2. IPSec peer-checking script (ipsec_peer_check.py)
+	3. Utilities: pgrep (for process management), kill (for process termination), and logger (for system logging)
 
-More projects will be added as I continue to explore new technologies.
+Installation
 
-Technologies
-
-This repository includes projects that utilize:
-
-    Programming Languages: Python, Shell, Bash, etc.
-    Libraries and Frameworks: Selenium, BeautifulSoup, Requests, etc.
-    Tools: Visual Studio Code, Git, pfSense.
-    Cloud and Networking: Network automation and management scripts.
-
-
-How to Use
-
-To clone and run any project in this repository:
-
-1. Clone the repository:
-
-        git clone git@github.com:NotoriousJP4/development.git
-
-2. Navigate to the project folder:
-
-       cd *project-folder*
-
-3. Follow the setup instructions in the project's README.md file.
-
-
-Contributing
-
-This repository is for personal development, but if you have suggestions, feel free to open an issue or submit a pull request. I'm always open to feedback!
-
+1. Upload [files] into a folder on the pfSense firewall
+2. Ensure the ipsec_peer_check.py script is placed in /usr/local/sbin/ or update the command path in the script to match the correct location of your Python script.
+3. Ensure the ipsec_peer_check.py script is placed in /usr/local/sbin/ or update the command path in the script to match the correct location of your Python script.
