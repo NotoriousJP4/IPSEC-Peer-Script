@@ -13,7 +13,7 @@ rc_start() {
     # The executable "pgrep" is found in the bin (binaries) folder
     pid = "$(/bin/pgrep -f $py_script)"
     if [ -n "${pid}" ]; then
-        echo "IPSEC Peer Script started. PID # is (${pid})"
+        echo "IPSEC Peer Script started. PID: (${pid})"
         /usr/bin/logger -p daemon.info -t ipsec-peer-script "IPSEC Peer Script started"
 
     else
@@ -23,3 +23,46 @@ rc_start() {
 
 }
 
+rc_stop() {
+
+    pid = "$(/bin/pgrep -f $py_script)"
+    if [ -n "${pid}" ]; then
+        /bin/kill $pid
+        echo "IPSEC Peer Scipt stopped. PID: (${pid})"
+        /usr/bin/logger -p daemon.info -t ipsec-peer-script "IPSEC Peer Script stopped"
+    fi
+
+}
+
+
+rc_status() {	
+	# Check status and print pid if running
+	pid="$(/bin/pgrep -f $py_script)"
+	if [ -n "${pid}" ]; then
+		echo "IPSEC Peer Script is running (${pid})"
+	else
+		echo "IPSEC Peer Script is not running"
+	fi
+}
+
+if [ $# -eq 0 ]; then
+	echo "No parameter specified - starting IPSEC Peer Script"
+	rc_start
+	exit
+fi
+
+case $1 in
+	start)
+		rc_start
+		;;
+	stop)
+		rc_stop
+		;;
+	restart)
+		rc_stop
+		rc_start
+		;;
+	status)
+		rc_status
+		;;
+esac
